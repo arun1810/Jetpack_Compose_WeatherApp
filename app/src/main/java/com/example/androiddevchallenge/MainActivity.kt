@@ -70,7 +70,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 @Composable
-fun ImageComponent() {
+fun imageComponent() {
     Image(
         painter = painterResource(id = R.drawable.ic_snow),
         contentDescription = null,
@@ -105,6 +105,8 @@ fun WeatherText(days: List<String>, temp: List<String>, cloudy: List<Int>) {
 
     val surfaceclr by animateColorAsState(colors.surface)
     val primaryclr = colors.primary
+    // val primaryclr by animateColorAsState(colors.primary)
+
     NewTheme(colors) {
         Surface(
             color = surfaceclr,
@@ -122,7 +124,7 @@ fun WeatherText(days: List<String>, temp: List<String>, cloudy: List<Int>) {
 
             ) {
 
-                ImageComponent()
+                imageComponent()
 
                 Column(
                     verticalArrangement = Arrangement.Center,
@@ -166,7 +168,7 @@ fun WeatherText(days: List<String>, temp: List<String>, cloudy: List<Int>) {
                                 .width(100.dp)
                                 .clip(shape = RoundedCornerShape(15.dp))
                         ) {
-                            BtnLayout(day = days[i], temp = temp[i] + "\u2103", cloudy[i])
+                            btnLayout(day = days[i], temp = temp[i] + "\u2103", cloudy[i])
                         }
                     }
                 }
@@ -197,7 +199,7 @@ fun WindTextnImage(primaryclr: Color) {
 }
 
 @Composable
-fun BtnLayout(day: String, temp: String, i: Int) {
+fun btnLayout(day: String, temp: String, i: Int) {
     Column(
         verticalArrangement = Arrangement.Top, horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -207,15 +209,10 @@ fun BtnLayout(day: String, temp: String, i: Int) {
 
         Text(text = day, style = MaterialTheme.typography.subtitle1, modifier = Modifier.align(Alignment.CenterHorizontally))
         Image(
-            painter = if (i == 0) {
-                painterResource(id = R.drawable.ic_sun_1)
-            } else {
-                painterResource(id = R.drawable.ic_cloudy_sun_1)
-            },
-            contentDescription = null,
+            painter = if (i == 0) { painterResource(id = R.drawable.ic_sun_1) } else { painterResource(id = R.drawable.ic_cloudy_sun_1) }, contentDescription = null,
             modifier = Modifier
-                .fillMaxWidth(0.80f)
-                .fillMaxHeight(0.80f),
+                .fillMaxWidth(0.70f)
+                .fillMaxHeight(0.70f),
         )
 
         Text(text = temp, style = MaterialTheme.typography.h6, modifier = Modifier.align(Alignment.CenterHorizontally))
@@ -224,7 +221,7 @@ fun BtnLayout(day: String, temp: String, i: Int) {
 
 @Preview
 @Composable
-fun Test() {
+fun test() {
     MaterialTheme() {
         val days = listOf("MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN")
         val temp = listOf("22", "19", "30", "26", "24", "27", "21")
