@@ -6,17 +6,17 @@
 
 
 ## :scroll: Description
-<!--- Weather App - It is a simple weather app built using JetPack Compose. Weather App contains Light and Dark Theme and features Hot and Cool Clr Theme which Changes Depending on the Temperature.-->
+ Weather App - It is a simple weather app built using JetPack Compose. Weather App contains Light and Dark Theme and features Hot and Cool Clr Theme which Changes Depending on the Temperature.
 
 
 ## :bulb: Motivation and Context
-<!--- This is the first time i have implemented 4 themes for a app and the theme changes depending on the current temperature displayed.
+ This is the first time i have implemented 4 themes for a app and the theme changes depending on the current temperature displayed.
  This Ui is inspired from a dribble post and is improvised by none other than me.
- -->
+
 
 
 ## :camera_flash: Screenshots
-<!-- You can add more screenshots here if you like -->
+
 <img src="/results/screenshot_1.png" width="260">&emsp;<img src="/results/screenshot_2.png" width="260">
 
 ## License
