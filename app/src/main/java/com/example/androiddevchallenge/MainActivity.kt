@@ -70,7 +70,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 @Composable
-fun imageComponent(){
+fun ImageComponent(){
     Image(painter = painterResource(id = R.drawable.ic_snow),
         contentDescription = null,
         modifier = Modifier
@@ -100,9 +100,7 @@ fun WeatherText(days:List<String>,temp:List<String>,cloudy:List<Int>) {
 
     val surfaceclr by animateColorAsState(colors.surface)
     val primaryclr = colors.primary
-    // val primaryclr by animateColorAsState(colors.primary)
-
-    NewTheme(colors) {
+     NewTheme(colors) {
         Surface(color = surfaceclr, modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight()) {
@@ -116,7 +114,7 @@ fun WeatherText(days:List<String>,temp:List<String>,cloudy:List<Int>) {
 
                 ) {
 
-                imageComponent()
+                ImageComponent()
 
                 Column(
                     verticalArrangement = Arrangement.Center,
@@ -160,7 +158,7 @@ fun WeatherText(days:List<String>,temp:List<String>,cloudy:List<Int>) {
                                 .width(100.dp)
                                 .clip(shape = RoundedCornerShape(15.dp))
                         ) {
-                            btnLayout(day = days[i], temp = temp[i] + "\u2103",cloudy[i])
+                            BtnLayout(day = days[i], temp = temp[i] + "\u2103",cloudy[i])
 
                         }
                     }
@@ -192,7 +190,7 @@ fun WindTextnImage(primaryclr: Color){
 }
 
 @Composable
-fun btnLayout(day:String,temp:String,i:Int){
+fun BtnLayout(day:String,temp:String,i:Int){
     Column(verticalArrangement = Arrangement.Top,horizontalAlignment = Alignment.CenterHorizontally,modifier = Modifier
         .fillMaxWidth()
         .fillMaxHeight()
@@ -216,7 +214,7 @@ fun btnLayout(day:String,temp:String,i:Int){
 
 @Preview
 @Composable
-fun test(){
+fun Test(){
     MaterialTheme() {
         val days  = listOf("MON","TUE","WED","THU","FRI","SAT","SUN")
         val  temp = listOf("22","19","30","26","24","27","21")
