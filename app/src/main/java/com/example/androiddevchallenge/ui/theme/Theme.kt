@@ -26,13 +26,13 @@ val CoolDarkColorPalette = darkColors(
     onPrimary = white,
     onSurface = white,
     surface = black,
-    )
+)
 val HotDarkColorPalette = darkColors(
     primary = green_bg,
     onPrimary = white,
     onSurface = white,
     surface = black,
-    )
+)
 
 val CoolColorPalette = lightColors(
     primary = white,
@@ -48,9 +48,7 @@ val HotColorPalette = lightColors(
 )
 
 @Composable
-fun NewTheme(colors: Colors, content: @Composable() () -> Unit){
-
-
+fun NewTheme(colors: Colors, content: @Composable() () -> Unit) {
 
     MaterialTheme(
         colors = colors,
@@ -59,4 +57,3 @@ fun NewTheme(colors: Colors, content: @Composable() () -> Unit){
         content = content
     )
 }
-

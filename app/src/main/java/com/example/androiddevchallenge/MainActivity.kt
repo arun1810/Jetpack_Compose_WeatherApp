@@ -55,23 +55,24 @@ import com.example.androiddevchallenge.ui.theme.HotDarkColorPalette
 import com.example.androiddevchallenge.ui.theme.NewTheme
 
 class MainActivity : ComponentActivity() {
-    private  lateinit var days:List<String>
-    lateinit   var  temp:List<String>
-    lateinit   var  cloudy:List<Int>
+    private lateinit var days: List<String>
+    lateinit var temp: List<String>
+    lateinit var cloudy: List<Int>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent{ days  = listOf("MON","TUE","WED","THU","FRI","SAT","SUN")
-            temp = listOf("22","19","30","26","24","27","21")
-            cloudy=listOf(0,1,0,1,0,0,1)
+        setContent {
+            days = listOf("MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN")
+            temp = listOf("22", "19", "30", "26", "24", "27", "21")
+            cloudy = listOf(0, 1, 0, 1, 0, 0, 1)
 
-            WeatherText(days,temp,cloudy,)
-
+            WeatherText(days, temp, cloudy,)
         }
     }
 }
 @Composable
-fun ImageComponent(){
-    Image(painter = painterResource(id = R.drawable.ic_snow),
+fun ImageComponent() {
+    Image(
+        painter = painterResource(id = R.drawable.ic_snow),
         contentDescription = null,
         modifier = Modifier
             .fillMaxWidth()
@@ -79,40 +80,47 @@ fun ImageComponent(){
             .paddingFromBaseline(10.dp)
             .clip(shape = RoundedCornerShape(5.dp)),
 
-        )
+    )
 }
 
 @Composable
-fun WeatherText(days:List<String>,temp:List<String>,cloudy:List<Int>) {
+fun WeatherText(days: List<String>, temp: List<String>, cloudy: List<Int>) {
 
     var index by remember { mutableStateOf(0) }
     var colors by remember { mutableStateOf(CoolColorPalette) }
 
-
-    colors = if(isSystemInDarkTheme()){if(temp[index].toInt()>25){
-        HotDarkColorPalette}else{
-        CoolDarkColorPalette}
+    colors = if (isSystemInDarkTheme()) {
+        if (temp[index].toInt()> 25) {
+            HotDarkColorPalette
+        } else {
+            CoolDarkColorPalette
+        }
+    } else {
+        if (temp[index].toInt()> 25) {
+            HotColorPalette
+        } else {
+            CoolColorPalette
+        }
     }
-    else{if(temp[index].toInt()>25){
-        HotColorPalette}else{
-        CoolColorPalette}}
-
 
     val surfaceclr by animateColorAsState(colors.surface)
     val primaryclr = colors.primary
-     NewTheme(colors) {
-        Surface(color = surfaceclr, modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight()) {
+    NewTheme(colors) {
+        Surface(
+            color = surfaceclr,
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight()
+        ) {
 
             Column(
                 modifier = Modifier
                     .paddingFromBaseline(10.dp)
                     .fillMaxHeight(),
-                //verticalArrangement = Arrangement.Bottom,
+                // verticalArrangement = Arrangement.Bottom,
                 horizontalAlignment = Alignment.CenterHorizontally,
 
-                ) {
+            ) {
 
                 ImageComponent()
 
@@ -132,7 +140,7 @@ fun WeatherText(days:List<String>,temp:List<String>,cloudy:List<Int>) {
                         text = temp[index] + "\u2103",
                         style = MaterialTheme.typography.h1,
                         modifier = Modifier.align(Alignment.CenterHorizontally),
-                        color =primaryclr
+                        color = primaryclr
                     )
 
                     WindTextnImage(primaryclr = primaryclr)
@@ -146,40 +154,39 @@ fun WeatherText(days:List<String>,temp:List<String>,cloudy:List<Int>) {
                         .fillMaxWidth()
                         .fillMaxHeight(),
 
-
                     verticalAlignment = Alignment.Bottom
                 ) {
                     for (i in 1..6) {
                         Button(
-                            onClick = { index = i }, modifier = Modifier
+                            onClick = { index = i },
+                            modifier = Modifier
                                 .padding(end = 5.dp, bottom = 5.dp)
                                 .fillMaxHeight(0.55f)
-                                //.paddingFromBaseline(10.dp)
+                                // .paddingFromBaseline(10.dp)
                                 .width(100.dp)
                                 .clip(shape = RoundedCornerShape(15.dp))
                         ) {
-                            BtnLayout(day = days[i], temp = temp[i] + "\u2103",cloudy[i])
-
+                            BtnLayout(day = days[i], temp = temp[i] + "\u2103", cloudy[i])
                         }
                     }
                 }
             }
         }
     }
-
 }
 
 @Composable
-fun WindTextnImage(primaryclr: Color){
+fun WindTextnImage(primaryclr: Color) {
     Row(verticalAlignment = Alignment.CenterVertically) {
-        Image(painter = painterResource(id = R.drawable.ic_windy),
+        Image(
+            painter = painterResource(id = R.drawable.ic_windy),
             contentDescription = null,
             modifier = Modifier
 
                 .clip(shape = RoundedCornerShape(5.dp))
                 .padding(1.dp),
 
-            )
+        )
 
         Text(
             text = "8km/h",
@@ -190,35 +197,38 @@ fun WindTextnImage(primaryclr: Color){
 }
 
 @Composable
-fun BtnLayout(day:String,temp:String,i:Int){
-    Column(verticalArrangement = Arrangement.Top,horizontalAlignment = Alignment.CenterHorizontally,modifier = Modifier
-        .fillMaxWidth()
-        .fillMaxHeight()
+fun BtnLayout(day: String, temp: String, i: Int) {
+    Column(
+        verticalArrangement = Arrangement.Top, horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight()
     ) {
 
-        Text(text = day,style = MaterialTheme.typography.subtitle1,modifier = Modifier.align( Alignment.CenterHorizontally))
-        Image(painter = if(i==0){
-            painterResource(id = R.drawable.ic_sun_1)
-        }else{
-            painterResource(id = R.drawable.ic_cloudy_sun_1)
-        },contentDescription = null,
+        Text(text = day, style = MaterialTheme.typography.subtitle1, modifier = Modifier.align(Alignment.CenterHorizontally))
+        Image(
+            painter = if (i == 0) {
+                painterResource(id = R.drawable.ic_sun_1)
+            } else {
+                painterResource(id = R.drawable.ic_cloudy_sun_1)
+            },
+            contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth(0.80f)
                 .fillMaxHeight(0.80f),
         )
 
-        Text(text = temp,style = MaterialTheme.typography.h6,modifier = Modifier.align( Alignment.CenterHorizontally))
-
+        Text(text = temp, style = MaterialTheme.typography.h6, modifier = Modifier.align(Alignment.CenterHorizontally))
     }
 }
 
 @Preview
 @Composable
-fun Test(){
+fun Test() {
     MaterialTheme() {
-        val days  = listOf("MON","TUE","WED","THU","FRI","SAT","SUN")
-        val  temp = listOf("22","19","30","26","24","27","21")
-        val cloudy=listOf(0,1,0,1,0,0,1)
-        WeatherText(days = days, temp = temp, cloudy =cloudy )
+        val days = listOf("MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN")
+        val temp = listOf("22", "19", "30", "26", "24", "27", "21")
+        val cloudy = listOf(0, 1, 0, 1, 0, 0, 1)
+        WeatherText(days = days, temp = temp, cloudy = cloudy)
     }
 }
