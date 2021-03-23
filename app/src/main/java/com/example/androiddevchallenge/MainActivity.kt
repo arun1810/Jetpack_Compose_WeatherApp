@@ -18,19 +18,29 @@ package com.example.androiddevchallenge
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.paddingFromBaseline
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -38,7 +48,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.androiddevchallenge.ui.theme.*
+import com.example.androiddevchallenge.ui.theme.CoolColorPalette
+import com.example.androiddevchallenge.ui.theme.CoolDarkColorPalette
+import com.example.androiddevchallenge.ui.theme.HotColorPalette
+import com.example.androiddevchallenge.ui.theme.HotDarkColorPalette
+import com.example.androiddevchallenge.ui.theme.NewTheme
 
 class MainActivity : ComponentActivity() {
     private  lateinit var days:List<String>
@@ -76,8 +90,9 @@ fun WeatherText(days:List<String>,temp:List<String>,cloudy:List<Int>) {
 
 
     colors = if(isSystemInDarkTheme()){if(temp[index].toInt()>25){
-        HotDarkColorPalette }else{
-        CoolDarkColorPalette}}
+        HotDarkColorPalette}else{
+        CoolDarkColorPalette}
+    }
     else{if(temp[index].toInt()>25){
         HotColorPalette}else{
         CoolColorPalette}}

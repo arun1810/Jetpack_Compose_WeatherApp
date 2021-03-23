@@ -22,60 +22,30 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 
 val CoolDarkColorPalette = darkColors(
-    primary = blue_bg
-    ,
+    primary = blue_bg,
     onPrimary = white,
-
     onSurface = white,
     surface = black,
-
-
-
-
     )
 val HotDarkColorPalette = darkColors(
-    primary = green_bg
-    ,
+    primary = green_bg,
     onPrimary = white,
-
     onSurface = white,
     surface = black,
-
-
-
-
     )
 
 val CoolColorPalette = lightColors(
     primary = white,
     onPrimary = black,
-
     onSurface = white,
     surface = blue_bg,
 )
 val HotColorPalette = lightColors(
     primary = white,
     onPrimary = black,
-
     onSurface = white,
     surface = green_bg,
 )
-
-
-//onPrimary = white,
-
-// onBackground = on_primary2
-
-
-/* Other default colors to override
-background = Color.White,
-surface = Color.White,
-onPrimary = Color.White,
-onSecondary = Color.Black,
-onBackground = Color.Black,
-onSurface = Color.Black,
-*/
-
 
 @Composable
 fun NewTheme(colors: Colors, content: @Composable() () -> Unit){
