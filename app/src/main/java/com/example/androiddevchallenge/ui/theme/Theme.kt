@@ -15,40 +15,72 @@
  */
 package com.example.androiddevchallenge.ui.theme
 
-import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material.Colors
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 
-private val DarkColorPalette = darkColors(
-    primary = purple200,
-    primaryVariant = purple700,
-    secondary = teal200
+val CoolDarkColorPalette = darkColors(
+    primary = blue_bg
+    ,
+    onPrimary = white,
+
+    onSurface = white,
+    surface = black,
+
+
+
+
+    )
+val HotDarkColorPalette = darkColors(
+    primary = green_bg
+    ,
+    onPrimary = white,
+
+    onSurface = white,
+    surface = black,
+
+
+
+
+    )
+
+val CoolColorPalette = lightColors(
+    primary = white,
+    onPrimary = black,
+
+    onSurface = white,
+    surface = blue_bg,
+)
+val HotColorPalette = lightColors(
+    primary = white,
+    onPrimary = black,
+
+    onSurface = white,
+    surface = green_bg,
 )
 
-private val LightColorPalette = lightColors(
-    primary = purple500,
-    primaryVariant = purple700,
-    secondary = teal200
 
-        /* Other default colors to override
-    background = Color.White,
-    surface = Color.White,
-    onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
-    onSurface = Color.Black,
-    */
-)
+//onPrimary = white,
+
+// onBackground = on_primary2
+
+
+/* Other default colors to override
+background = Color.White,
+surface = Color.White,
+onPrimary = Color.White,
+onSecondary = Color.Black,
+onBackground = Color.Black,
+onSurface = Color.Black,
+*/
+
 
 @Composable
-fun MyTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
-    val colors = if (darkTheme) {
-        DarkColorPalette
-    } else {
-        LightColorPalette
-    }
+fun NewTheme(colors: Colors, content: @Composable() () -> Unit){
+
+
 
     MaterialTheme(
         colors = colors,
@@ -57,3 +89,4 @@ fun MyTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() (
         content = content
     )
 }
+
